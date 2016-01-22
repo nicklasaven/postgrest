@@ -284,7 +284,7 @@ your authenticator role should have access to nothing except the
 ability to become other users. Supposing you have three roles, one
 for anonymous users, one for authors, and another for the authenticator,
 you would set it up like this</p>
-<pre><code class="sql">CREATE ROLE authenticator NOINHERIT;
+<pre><code class="sql">CREATE ROLE authenticator NOINHERIT LOGIN;
 CREATE ROLE anon;
 CREATE ROLE author;
 

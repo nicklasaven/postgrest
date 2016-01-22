@@ -390,7 +390,7 @@ WHERE
 <h3 id="using-the-jwt">Using the JWT</h3>
 <p>Now whenever you are authenticated in your Rails application you can use some Javascript
  code to get the token and use it:</p>
-<pre><code class="javascript">$.getJSON('/api_json').done(function(data){
+<pre><code class="javascript">$.getJSON('/api_token').done(function(data){
     $.ajax('/orders', {'Authorization': 'Bearer ' + data.token}).done(function(data){
         console.log('Visible Orders: ', data);
     })
