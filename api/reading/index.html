@@ -413,7 +413,7 @@ comma-separated list of columns and directions:</p>
 <pre><code class="HTTP">GET /people?order=age.desc,height.asc
 </code></pre>
 
-<p>If no direction is specified it defaults to descending order:</p>
+<p>If no direction is specified it defaults to ascending order:</p>
 <pre><code class="HTTP">GET /people?order=age
 </code></pre>
 
@@ -505,6 +505,11 @@ you can embed a row with just the name's beginning.</p>
 </code></pre>
 
 <p>Would embed in the <code>client</code> key the row referenced with <code>client_id</code>.</p>
+<div class="admonition note">
+    <p class="admonition-title">Design Consideration</p>
+    <p>In order for this feature to work as expected after a schema change, PostgREST currently requires to be restarted.</p>
+</div>
+
 <h3 id="response-format">Response Format</h3>
 <p>Query responses default to JSON but you can get them in CSV as well. Just make your request with the header</p>
 <pre><code class="HTTP">Accept: text/csv

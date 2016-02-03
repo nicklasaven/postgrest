@@ -350,6 +350,30 @@ same role for authenticator and anonymous.</p>
     file.</p>
 </div>
 
+<p>When running <code>postgrest</code> on the same machine as PostgreSQL, it is also
+possible to connect to the database using the [Unix socket]
+(https://en.wikipedia.org/wiki/Unix_domain_socket) and the
+[Peer Authentication method]
+(http://www.postgresql.org/docs/current/static/auth-methods.html#AUTH-PEER)
+as an alternative to TCP/IP communication and authentication with a password.</p>
+<p>The Peer Authentication grants access to the database to any Unix user
+who connects as a user of the same name in the database.
+Since the empty host resolves to the Unix socket]
+(http://www.postgresql.org/docs/current/static/libpq-connect.html#AEN42494)
+and the password can be omitted in this case,
+the command line is reduced to:</p>
+<pre><code class="sh">sudo -u user postgrest postgres://user@/db [flags]
+</code></pre>
+
+<p>where the <code>sudo -u user</code> command runs the following command as given <code>user</code>.</p>
+<p>If you create a Unix user <code>postgrest</code> and a database user <code>postgrest</code>
+for example, the command becomes:</p>
+<pre><code class="sh">sudo -u postgrest postgrest postgres://postgrest@/db [flags]
+</code></pre>
+
+<p>The first <code>postgrest</code> is the Unix user name, the second <code>postgrest</code>
+is the name of the executable, the third <code>postgrest</code> is the name
+of the database user.</p>
 <h3 id="install-via-homebrew-mac-os-x">Install via Homebrew (Mac OS X)</h3>
 <p>You can use the Homebrew package manager to install PostgREST on Mac</p>
 <pre><code class="bash"># Ensure brew is up to date
